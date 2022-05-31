@@ -13,4 +13,8 @@ public class VerifyRegisterSuccess extends Utils {
         Assert.assertEquals(actual, expected, "Registration is not success full");
 
     }
+
+    public void clickOnContinue(){
+        driverWaitsUntilClick(By.xpath("//a[contains(text(),\"Continue\")]"),5);
+    }
 }

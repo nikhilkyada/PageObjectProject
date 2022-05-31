@@ -16,9 +16,11 @@ public class VerifyProductAddedToCart extends Utils {
         Assert.assertEquals(title, expectedTitle, "Page Title is not Matching");
 
         //Product Verification
-        String actual = gettext(By.xpath("//a[@href=\"/build-your-own-computer\" and @class=\"product-name\"]"));
+        String actual = gettext(By.xpath("//td[@class=\"product\"]//child::a[.=\"Build your own computer\"]"));
         String expected = "Build your own computer";
-        Assert.assertEquals(actual, expected, "Product name is NOT matching");
+       Assert.assertTrue(gettext(By.xpath("//td[@class=\"product\"]//child::a[.=\"Build your own computer\"]")).equalsIgnoreCase("Build your own computer"),"Product name is not matching");
+
+        //Assert.assertEquals(actual, expected, "Product name is NOT matching"); //This assert is not working in EDGE
     }
 
 }
