@@ -6,7 +6,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +20,15 @@ import java.util.regex.Pattern;
 public class Utils extends BasePage{
 
     //All Re-usable Methods
+
+    //Assert
+    public static void waitAssertEqualsIgnoreCase(By by,String text, int time){
+
+        String actual = driver.findElement(by).getText();
+        String expected =driver.findElement(by).getText().substring(3);
+        System.out.println("Expected"+expected);
+        System.out.println("actual"+actual);
+    }
 
     //Screenshot
     public static void takeScreenshot(String filename){
@@ -35,6 +46,16 @@ public class Utils extends BasePage{
         }
     }
 
+    //Select by Index
+    public static void selectByIndex(By by,int index){
+        Select selectDay = new Select(driver.findElement(by));
+        selectDay.selectByIndex(index);
+    }
+    //Select by Visible Text
+    public static void selectByVisibleText(By by,String text){
+        Select selectYear = new Select(driver.findElement(by));
+        selectYear.selectByVisibleText(text);
+    }
 
     //Click on Element
     public static void driverClickOnElement(By by)
@@ -43,7 +64,7 @@ public class Utils extends BasePage{
     }
 
     //Send Text Values
-    public static void driverSendValue(By by, String value)
+    public static void driverSendKeys(By by, String value)
     {
         driver.findElement(by).sendKeys(value);
     }
@@ -68,7 +89,7 @@ public class Utils extends BasePage{
     }
 
     //Wait for element to be click-able
-    public static void driverWaitsUntil(By by, int time)
+    public static void driverWaitsUntilClick(By by, int time)
     {
         WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(time));
         wait.until(ExpectedConditions.elementToBeClickable(by)).click();

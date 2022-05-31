@@ -5,7 +5,9 @@ import org.openqa.selenium.support.ui.Select;
 
 public class BuildYourOwnProductPage extends Utils {
 
-
+    public void verifyURLOfBuildYourOwnDesktopProduct(){
+        driverWaitUrl("https://demo.nopcommerce.com/build-your-own-computer",5);
+    }
     public void selectAllOptionsAndClickOnAddToCart(){
 
         //Select Processor
@@ -27,9 +29,20 @@ public class BuildYourOwnProductPage extends Utils {
         driverClickOnElement(By.id("product_attribute_5_12"));
 
         //Click on Add to cart button
-        driverWaitsUntil(By.xpath("//div[@class=\"add-to-cart\"]//child::button") ,3);
+        driverWaitsUntilClick(By.xpath("//div[@class=\"add-to-cart\"]//child::button") ,3);
+
+//        try {
+//            Thread.sleep(5000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
         //Click on Shopping Cart
-        driverWaitsUntil(By.xpath("//span[@class=\"cart-label\"]"),5);
+        driverWaitsUntilClick(By.xpath("//a[.=\"shopping cart\"]"),6);
+        //driverWaitsUntilClick(By.xpath("//span[@class=\"cart-label\"]"),7);
+    }
+
+    public void clickOnEmailAFriend(){
+        driverClickOnElement(By.xpath("//button[contains(text(),\"Email a friend\")]"));
     }
 }
