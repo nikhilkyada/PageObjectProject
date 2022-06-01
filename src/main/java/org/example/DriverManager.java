@@ -34,7 +34,6 @@ public class DriverManager extends Utils{
 
         }
 
-
             //Duration to be wait
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));  //if this line 'RED' ,Click on bulb and select first option
 

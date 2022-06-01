@@ -111,6 +111,10 @@ public class Utils extends BasePage{
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(by));
     }
 
+    public static  void waitforText(By by,String value , int time){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+        wait.until(ExpectedConditions.textToBe(by ,value));
+    }
     //wait until presence of Element Located (One only)
     public static void driverPresenceOfElement(By by,int time)
     {
