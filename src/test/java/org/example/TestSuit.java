@@ -17,11 +17,22 @@ public class TestSuit extends BaseTest {
     VerifyEmailAFriend verifyEmailAFriend = new VerifyEmailAFriend();
     SoftAssert softAssert = new SoftAssert();
     SerchNikeProductPage serchNikeProductPage = new SerchNikeProductPage();
-
+    NewReleasePage newReleasePage = new NewReleasePage();
 
     //All Test cases
+
     @Test
-    public void userShouldAbleToSearchProductsByName(String searchText){
+    public void  newReleaseproductlist(){
+        homePage.clickOnNewsReleaseDetails();
+        newReleasePage.verifyUrl("https://demo.nopcommerce.com/nopcommerce-new-release");
+        newReleasePage.getListOfCommentTitles("India","tial1");
+
+    }
+
+
+
+    @Test
+    public void userShouldAbleToSearchProductsByName(){
         homePage.typeInSearch(("nike").toUpperCase());
         homePage.clickOnSearchBtn();
         serchNikeProductPage.verifyUrlNike();
@@ -46,6 +57,7 @@ public class TestSuit extends BaseTest {
         homePage.fbButtonVerificationWithPopUpWindow();
     }
 
+    //Should be fail
     @Test
     public void productShouldBeZtoA(){
         //Click on Computers link

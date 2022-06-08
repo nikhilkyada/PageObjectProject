@@ -1,7 +1,6 @@
 package org.example;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.util.*;
@@ -22,7 +21,17 @@ public class HomePage extends Utils {
     By _facebookIcon = By.xpath("//a[contains(text(),'Facebook')]");
     By _searchSpace = By.id("small-searchterms");
     By _clickOnSearchBtn = By.xpath("//button[@type=\"submit\"]");
+    By _clickOnDetails = By.xpath("//div[@class=\"news-items\"]/div[2]//a[@class='read-more']");
 
+
+
+
+    public void clickOnNewsReleaseDetails(){
+
+    //Click on Details
+        driverClickOnElement(_clickOnDetails);
+
+    }
 
     public void typeInSearch(String value){
         driverSendKeys((_searchSpace),value);
