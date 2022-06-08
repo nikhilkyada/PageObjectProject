@@ -6,6 +6,18 @@ import org.openqa.selenium.support.ui.Select;
 
 public class RegistrationPage extends Utils {
 
+    By _radioMaleRegister = By.id("gender-male");
+    By _firstNameField =  By.xpath("//input[@name='FirstName']");
+    By _lastnameField = By.id("LastName");
+    By _birthdate = By.name("DateOfBirthDay");
+    By _birthMonth =By.name("DateOfBirthMonth");
+    By _birthYear = By.name("DateOfBirthYear");
+    By _emailAddress = By.id("Email");
+    By _passwordField = By.id("Password");
+    By _confPassword = By.id("ConfirmPassword");
+    By _clickOnRegister = By.id("register-button");
+    LoadProp loadProp = new LoadProp();
+
 
     public void verifyRegistrationPageURL(){
         //Verify the URL
@@ -16,35 +28,37 @@ public class RegistrationPage extends Utils {
     public void enterAllRegistrationDetails(){
 
         //Select Male Radio button----------------------------------------------------------------Radio button
-        driver.findElement(By.id("gender-male")).click();
+        driver.findElement(_radioMaleRegister).click();
 
         //Enter First name
-        driverSendKeys(By.xpath("//input[@name='FirstName']"), "Rajesh");
+        driverSendKeys((_firstNameField), loadProp.getProperty("firstName"));
 
         //Enter Last name
-        driverSendKeys(By.id("LastName"), "Patel");
+        driverSendKeys(_lastnameField, loadProp.getProperty("lastname"));
+
+        //properties
 
         //Birth Day-----------------------------------------------------------------------------Birthdate & All
-        Select selectDay = new Select(driver.findElement(By.name("DateOfBirthDay")));
-        selectDay.selectByIndex(9);
+        Select selectDay = new Select(driver.findElement(_birthdate));
+        selectDay.selectByIndex(Integer.parseInt(loadProp.getProperty("dobDay")));
         //Month
-        Select selectMonth = new Select(driver.findElement(By.name("DateOfBirthMonth")));
-        selectMonth.selectByValue("12");
+        Select selectMonth = new Select(driver.findElement(_birthMonth));
+        selectMonth.selectByValue(loadProp.getProperty("dobMonth"));
         //Year
-        Select selectYear = new Select(driver.findElement(By.name("DateOfBirthYear")));
-        selectYear.selectByVisibleText("1996");
+        Select selectYear = new Select(driver.findElement(_birthYear));
+        selectYear.selectByVisibleText(loadProp.getProperty("dobYear"));
 
         //Enter Email and Printout Time
-        driverSendKeys(By.id("Email"), "abc" + rendomdate() + "@gmail.com");
+        driverSendKeys(_emailAddress, loadProp.getProperty("emailPArt1")+ rendomdate() + loadProp.getProperty("emailPart2"));
         System.out.println(rendomdate());
 
         //Enter password
-        driverSendKeys(By.id("Password"), "asd@123");
+        driverSendKeys(_passwordField,loadProp.getProperty("password"));
 
         //Enter Confirmed Password
-        driverSendKeys(By.id("ConfirmPassword"), "asd@123");
+        driverSendKeys(_confPassword, loadProp.getProperty("confirmPassword"));
 
         //Click on Register button
-        driverWaitsUntilClick(By.id("register-button"),5);
+        driverWaitsUntilClick(_clickOnRegister,5);
     }
 }

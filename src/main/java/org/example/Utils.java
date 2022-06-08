@@ -15,12 +15,14 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 public class Utils extends BasePage{
 
     //All Re-usable Methods
-
 
     //Screenshot
     public static void takeScreenshot(String filename){
@@ -35,6 +37,14 @@ public class Utils extends BasePage{
             FileUtils.copyFile(srcFile, new File("Screenshots\\"+filename+rendomdate()+".png"));
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    //Array List
+    public static void getArrayList(By by){
+        List<WebElement> listname = driver.findElements(by);
+        for (WebElement e : listname){
+            System.out.println(e.getText());
         }
     }
 

@@ -1,20 +1,66 @@
 package org.example;
 
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 public class TestSuit extends BaseTest {
-    //All Test cases
 
+    //Objects
     HomePage homePage = new HomePage();
     RegistrationPage registrationPage = new RegistrationPage();
     VerifyRegisterSuccess verifyRegisterSuccess = new VerifyRegisterSuccess();
     Computers computers = new Computers();
-    DesktopProductsList desktopProductsList = new DesktopProductsList();
+    DesktopSubProductsList desktopSubProductsList = new DesktopSubProductsList();
     BuildYourOwnProductPage buildYourOwnProductPage = new BuildYourOwnProductPage();
     VerifyProductAddedToCart verifyProductAddedToCart = new VerifyProductAddedToCart();
     EmailaFriend emailaFriend = new EmailaFriend();
     VerifyEmailAFriend verifyEmailAFriend = new VerifyEmailAFriend();
+    SoftAssert softAssert = new SoftAssert();
+    SerchNikeProductPage serchNikeProductPage = new SerchNikeProductPage();
 
+
+    //All Test cases
+    @Test
+    public void userShouldAbleToSearchProductsByName(String searchText){
+        homePage.typeInSearch(("nike").toUpperCase());
+        homePage.clickOnSearchBtn();
+        serchNikeProductPage.verifyUrlNike();
+        serchNikeProductPage.findWordInProductTitle("NiKE");
+
+
+    }
+
+    @Test
+    public void userShouldSeePopUpAlertEmptyVoteBtnWithVerify(){
+        //Click on Vote button without poll
+        homePage.clickOnVote();
+        //Go to alert and get text and verify
+        homePage.switchToPopUpAlertGetTextsWithVerification();
+        //Accept alert
+        homePage.switchToPopUpAlertAccept();
+    }
+
+    @Test
+    public void verifyFBPopUp(){
+        //Go to new window alert and get url and verify
+        homePage.fbButtonVerificationWithPopUpWindow();
+    }
+
+    @Test
+    public void productShouldBeZtoA(){
+        //Click on Computers link
+        homePage.clickOnComputer();
+        //Verify URL to be
+        computers.verifyDesktopURL();
+        //Click on Desktop category
+        computers.clickOnDesktopCategory();
+        //Verify page
+        desktopSubProductsList.verifyDesktopProductsListPage();
+        //Select sort list Z to A
+        desktopSubProductsList.selectDropdownMenu();
+        //Get Name
+        desktopSubProductsList.getProductTitlesProprties();
+    }
 
     @Test
     public void userShouldBeAbleToRegisterSuccessfully() {
@@ -38,7 +84,7 @@ public class TestSuit extends BaseTest {
         //Click on Desktop category
         computers.clickOnDesktopCategory();
         //Click on "Add to cart" button on 1st product
-        desktopProductsList.clickOnButtonAddToCart();
+        desktopSubProductsList.clickOnButtonAddToCart();
         //Verify Product page URL to be
         buildYourOwnProductPage.verifyURLOfBuildYourOwnDesktopProduct();
         //Select all options and Click on "Add to cart" Button

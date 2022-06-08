@@ -10,7 +10,7 @@ public class DriverManager extends Utils{
 
     //Browser open and close methods
 
-    String browserName = "firefox";
+    String browserName = "chrome";
 
     public void openBrowser(){
 
@@ -24,6 +24,7 @@ public class DriverManager extends Utils{
             //Firefox
             System.setProperty("webdriver.gecko.driver","src/test/java/Drivers/geckodriver.exe" );
             driver= new FirefoxDriver();
+
         }else if(browserName.equalsIgnoreCase("Edge")){
             //Edge
             System.setProperty("webdriver.edge.driver","src/test/java/Drivers/msedgedriver.exe");
