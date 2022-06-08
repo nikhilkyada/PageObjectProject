@@ -94,9 +94,9 @@ public class HomePage extends Utils {
     }
 
     public void verifyCurrencyOnProductPrice(char capture, int charAt) {
-        char Expected = capture;
-        char ActualPrice = gettext(_actualPriceOfProduct).charAt(charAt);
-        Assert.assertEquals(ActualPrice, Expected, "Currency is WRONG");
+        char expected = capture;
+        char actualPrice = gettext(_actualPriceOfProduct).charAt(charAt);
+        Assert.assertEquals(actualPrice, expected, "Currency is WRONG");
     }
 
     public void verifyURLtoBe() {
@@ -117,7 +117,7 @@ public class HomePage extends Utils {
 
     public void verifyErrorMessageOfPole() {
 
-        waitforText(_errorMessageVote, "Only registered users can vote.", 10);
+        driverTextToBe(_errorMessageVote, "Only registered users can vote.", 10);
         String actual = driver.findElement(_errorMessageVote).getText();
         String expected = "Only registered users can vote.";
         Assert.assertEquals(actual, expected, "Error message dose not matched");
