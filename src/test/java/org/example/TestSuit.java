@@ -19,7 +19,7 @@ public class TestSuit extends BaseTest {
     SerchNikeProductPage serchNikeProductPage = new SerchNikeProductPage();
     NewReleasePage newReleasePage = new NewReleasePage();
 
-    //All Test cases
+    //All Test 
 
     @Test
     public void newReleaseProductList(){
