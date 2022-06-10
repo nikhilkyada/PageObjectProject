@@ -87,7 +87,6 @@ public class Utils extends BasePage{
 
         WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(time));
         wait.until(ExpectedConditions.elementToBeClickable(element));
-
     }
 
     //Wait for element to be click-able
@@ -112,6 +111,12 @@ public class Utils extends BasePage{
 
     public static String titleOfPage(){
         return driver.getTitle();
+    }
+
+    //URL to be
+    public static void driverWaitUrlToBe(String exUrl , int time){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+        wait.until(ExpectedConditions.urlToBe(exUrl));
     }
 
     //Wait until Presence of Element (All)

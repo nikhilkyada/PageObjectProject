@@ -1,6 +1,7 @@
 package org.example;
 
 import org.openqa.selenium.By;
+
 import org.testng.Assert;
 
 import java.util.*;
@@ -25,7 +26,6 @@ public class HomePage extends Utils {
 
 
 
-
     public void clickOnNewsReleaseDetails(){
 
     //Click on Details
@@ -40,7 +40,6 @@ public class HomePage extends Utils {
     public  void clickOnSearchBtn(){
         driverClickOnElement(_clickOnSearchBtn);
     }
-
 
     public void fbButtonVerificationWithPopUpWindow(){
 
@@ -58,10 +57,12 @@ public class HomePage extends Utils {
             if (!mainWindow.equals(subWindows)){
                 //go to new window
                driver.switchTo().window(subWindows);
+               //
+                driverWaitUrlToBe("https://www.facebook.com/nopCommerce",5);
                //Get url
                String actualUrl = driver.getCurrentUrl();
                System.out.println("actual ="+actualUrl);
-               System.out.println("Expected = https://www.facebook.com/nopCommerce");
+               System.out.println("Expected =https://www.facebook.com/nopCommerce");
 
                //verification
                 Assert.assertEquals(actualUrl,"https://www.facebook.com/nopCommerce","Facebook URL is not matching");

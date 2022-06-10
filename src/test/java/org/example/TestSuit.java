@@ -22,14 +22,12 @@ public class TestSuit extends BaseTest {
     //All Test cases
 
     @Test
-    public void  newReleaseproductlist(){
+    public void newReleaseProductList(){
         homePage.clickOnNewsReleaseDetails();
         newReleasePage.verifyUrl("https://demo.nopcommerce.com/nopcommerce-new-release");
         newReleasePage.getListOfCommentTitles("India","tial1");
 
     }
-
-
 
     @Test
     public void userShouldAbleToSearchProductsByName(){

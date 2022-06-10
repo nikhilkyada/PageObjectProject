@@ -10,7 +10,7 @@ public class DriverManager extends Utils{
 
     //Browser open and close methods
 
-    String browserName = "chrome";
+    String browserName = "firefox";
 
     public void openBrowser(){
 
