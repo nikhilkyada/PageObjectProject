@@ -28,6 +28,11 @@ public class RegistrationPage extends Utils {
     public void enterAllRegistrationDetails(){
 
         //Select Male Radio button----------------------------------------------------------------Radio button
+        try {
+            Thread.sleep(300);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         driver.findElement(_radioMaleRegister).click();
 
         //Enter First name

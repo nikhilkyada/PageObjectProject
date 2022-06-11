@@ -17,15 +17,15 @@ public class TestSuit extends BaseTest {
     VerifyEmailAFriend verifyEmailAFriend = new VerifyEmailAFriend();
     SoftAssert softAssert = new SoftAssert();
     SerchNikeProductPage serchNikeProductPage = new SerchNikeProductPage();
-    NewReleasePage newReleasePage = new NewReleasePage();
+    VerifyNewReleasePage verifyNewReleasePage = new VerifyNewReleasePage();
 
-    //All Test 
+    //All Test
 
     @Test
     public void newReleaseProductList(){
         homePage.clickOnNewsReleaseDetails();
-        newReleasePage.verifyUrl("https://demo.nopcommerce.com/nopcommerce-new-release");
-        newReleasePage.getListOfCommentTitles("India","tial1");
+        verifyNewReleasePage.verifyUrl("https://demo.nopcommerce.com/nopcommerce-new-release");
+        verifyNewReleasePage.getListOfCommentTitles("India","tial1");
 
     }
 

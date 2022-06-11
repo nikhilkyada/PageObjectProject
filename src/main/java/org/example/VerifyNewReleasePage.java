@@ -8,7 +8,7 @@ import org.testng.asserts.SoftAssert;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewReleasePage extends  Utils{
+public class VerifyNewReleasePage extends  Utils{
 
     By _listOfComments = By.xpath("//div[@class='comment-title']");
 
